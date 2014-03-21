@@ -242,18 +242,18 @@ include ("my_templates/for_main.php");
       
         <div class="span3" id ="ending_banner">
           <br><br> 
-          <p>О КОМПАНИИ</p>
+          <p><a href="/about_company">О КОМПАНИИ</a></p>
           <p><a href="/about_us">О нас</a></p>
-          <p>Вакансии</p>
-          <p>Партнерам</p>
-          <p>Контакты</p>
-          <p>Сертификаты</p>
-          <p>Приемущества</p>
+          <p><a href="/vacancy">Вакансии</a></p>
+          <p><a href="/for_partners">Партнерам</a></p>
+          <p><a href="/contacts">Контакты</a></p>
+          <p><a href="/certificates">Сертификаты</a></p>
+          <p><a href="/advantages">Приемущества</a></p>
        </div>
        <div class="span3">
           <br><br> 
-          <p>МОЙ СЧЕТ</p>
-          <p>Мои заказы</p>
+          <p><a href="/my_account">МОЙ СЧЕТ</a></p>
+          <p><a href="/my_orders">Мои заказы</a></p>
           <p>Мои желаемые товары</p>
        </div>
        <div class="span3">

@@ -6505,7 +6505,7 @@ a.badge:focus {
 #use_shadow {
   /* border: 3px solid #c3c4c0;  */
 
-   box-shadow: 0 0 30px rgba(0,0,0,0.7); /* Параметры тени */
+   box-shadow: 0 0 15px rgba(0,0,0,0.3); /* Параметры тени */
     padding: 0px;
 }
 
