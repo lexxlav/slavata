@@ -118,6 +118,7 @@ function commerce_receipt_token_info() {
       'name' => t('Billing address 2'),
       'description' => t('Second (additional) billing address'),
     );
+   
   return array(
     'types' => array('commerce-receipt' => $type),
     'tokens' => array('commerce-receipt' => $tokens),
@@ -125,12 +126,19 @@ function commerce_receipt_token_info() {
 } 
 
 function commerce_receipt_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  /* не местное=)*/
+    global $user;
+  
   $replacements = array();
+  
+ 
+  /* --------------*/
+  /*$replacements = array();*/
   if ($type == 'commerce-receipt') {
     $order = $data['commerce-receipt'];
-    $id_shipping = $order->commerce_customer_shipping['und'][0]['profile_id'];
+   // $id_shipping = $order->commerce_customer_shipping['und'][0]['profile_id'];
     $id_billing = $order->commerce_customer_billing['und'][0]['profile_id'];
-    $profile_shipping = commerce_customer_profile_load($id_shipping);
+  //  $profile_shipping = commerce_customer_profile_load($id_shipping);
     $profile_billing = commerce_customer_profile_load($id_billing);
     $currency_default = commerce_default_currency();
     $currency_convert = commerce_receipt_get_settings('currency');
@@ -146,6 +154,9 @@ function commerce_receipt_tokens($type, $tokens, array $data = array(), array $o
     $amount_dec = ($decimal) ? $decimal : '00';
     foreach ($tokens as $name => $original) {
       switch ($name) {
+        /*------------*/
+        
+        /*------------*/
         case 'bank-name':
           $replacements[$original] = commerce_receipt_get_settings('bank_name');
           break;
@@ -177,60 +188,113 @@ function commerce_receipt_tokens($type, $tokens, array $data = array(), array $o
           $replacements[$original] = $order->order_number;
           break;
         case 'shipping-first-name':
-          $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['first_name'];
+         // $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['first_name'];
           break;
         case 'shipping-last-name':
-          $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['last_name'];
+         // $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['last_name'];
         case 'shipping-full-name':
-          $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['name_line'];
+         // $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['name_line'];
           break;
         case 'shipping-country':
-          $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['country'];
+        //  $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['country'];
           break;
         case 'shipping-org':
-          $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['organisation_name'];
+        //  $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['organisation_name'];
           break;
         case 'shipping-post':
-          $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['postal_code'];
+        //  $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['postal_code'];
           break;
         case 'shipping-city':
-          $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['locality'];
+        //  $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['locality'];
           break;
         case 'shipping-address-1':
-          $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['thoroughfare'];
+        //  $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['thoroughfare'];
           break;
         case 'shipping-address-2':
-          $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['premise'];
+        //  $replacements[$original] = $profile_shipping->commerce_customer_address['und'][0]['premise'];
           break;
         case 'billing-first-name':
-          $replacements[$original] = $profile_billing->commerce_customer_address['und'][0]['first_name'];
+         // $replacements[$original] = $profile_billing->commerce_customer_address['und'][0]['first_name'];
           break;
         case 'billing-last-name':
-          $replacements[$original] = $profile_billing->commerce_customer_address['und'][0]['last_name'];
+        //  $replacements[$original] = $profile_billing->commerce_customer_address['und'][0]['last_name'];
           break;
         case 'billing-full-name':
-          $replacements[$original] = $profile_billing->commerce_customer_address['und'][0]['name_line'];
+          $buf= $profile_billing->field_family['und'][0]['value']." ".$profile_billing->field_name['und'][0]['value']." ".$profile_billing->field_otchestvo['und'][0]['value'];
+          $replacements[$original] = $buf;
           break;
         case 'billing-country':
-          $replacements[$original] = $profile_billing->commerce_customer_address['und'][0]['country'];
+          $replacements[$original] = $profile_billing->field_countries['und'][0]['value'];
           break;
         case 'billing-org':
-          $replacements[$original] = $profile_billing->commerce_customer_address['und'][0]['organisation_name'];
+        //  $replacements[$original] = $profile_billing->commerce_customer_address['und'][0]['organisation_name'];
           break;
         case 'billing-post':
-          $replacements[$original] = $profile_billing->commerce_customer_address['und'][0]['postal_code'];
+        //  $replacements[$original] = $profile_billing->commerce_customer_address['und'][0]['postal_code'];
           break;
         case 'billing-city':
-          $replacements[$original] = $profile_billing->commerce_customer_address['und'][0]['locality'];
+          $replacements[$original] = $profile_billing->field_city['und'][0]['value'];
           break;
         case 'billing-address-1':
-          $replacements[$original] = $profile_billing->commerce_customer_address['und'][0]['thoroughfare'];
+          $replacements[$original] = $profile_billing->field_addres['und'][0]['value'];
           break;
         case 'billing-address-2':
-          $replacements[$original] = $profile_billing->commerce_customer_address['und'][0]['premise'];
+         // $replacements[$original] = $profile_billing->commerce_customer_address['und'][0]['premise'];
           break;
       }
     }   
   }
   return $replacements;
 }
+
+
+/**
+ * Implements hook_token_info().
+ */
+function simple_tokens_token_info() {
+  $types['andy_pangus'] = array(
+    'name' => t("Andy Pangus Tokens"),
+    'description' => t("Tokens for Andy Pangus."),
+  );
+  
+  // Andy Pangus specific tokens.
+  $andy_pangus['user_city'] = array(
+    'name' => t("User City"),
+    'description' => t("The {user}.name of the user viewing the content."),
+  );
+  $andy_pangus['user_email'] = array(
+    'name' => t("User Email"),
+    'description' => t("The {user}.mail of the user viewing the content."),
+  );
+  
+  return array(
+    'types' => $types,
+    'tokens' => array(
+      'andy_pangus' => $andy_pangus,
+    ),
+  );
+}
+
+
+
+function simple_tokens_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  global $user;
+  
+  $replacements = array();
+  
+  if ($type == 'andy_pangus') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'user_city':
+          $replacements[$original] = $user->city;
+        break;
+        case 'user_email':
+          $replacements[$original] = $user->mail;
+        break;
+      }
+    }
+  }
+  
+  return $replacements;
+}
+

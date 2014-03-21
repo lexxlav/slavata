@@ -94,4 +94,19 @@
      </div>";
   }
 
+
+function front_page_css()
+{ echo "
+  <style type='text/css'>
+     .views-view-grid 
+       {width: auto;
+       	max-width: 95%;
+		margin-left: 5%;}  
+ 
+     .product-grid-col
+      {width: 225px;}
+  </style>";
+}
+
+
   ?>

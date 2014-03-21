@@ -4781,7 +4781,7 @@ input[type="submit"].btn.btn-mini {
 .views-content-title > a:hover,
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
-  color: #A9A9A9;
+  color: #DCDCDC;
   text-decoration: none;
   background-color: transparent;
   
@@ -6338,8 +6338,11 @@ a.badge:focus {
 }
 
 #banner2 {
-  font-size: 14pt;
+  height: 71px;
+  font-size: 15pt;
   text-align: center;
+  background-image: url(../images/line.png);
+  margin-bottom: 10px;
 }
 
 
@@ -6353,6 +6356,12 @@ a.badge:focus {
   color: #663333;
   text-indent: 20px;
 }
+
+.comments__title,
+.comments__form-title {
+  text-indent: 0;
+}
+
 #content #page-title {
   text-indent: 0;
 }
@@ -6388,13 +6397,18 @@ a.badge:focus {
 #cart_text,
 #cart_text {
   padding: 32px 40px;
-  margin-left: -10px;
+  margin-left: -25px;
   
   /*text-align: center;*/
 }
 
 #cart_summ {
   margin-top: 5px;
+  text-align: center;
+  width: 95px;
+   white-space: nowrap;
+  /*overflow: hidden;*/
+
 }
 
 #cart_img_link,
@@ -6695,7 +6709,9 @@ margin-right: -20%;
 }
 
 .product-grid-col {
-  width: 25%
+  
+  width: 175px;
+  text-align: center;
 }
 
 .views-content-title > a 
@@ -6754,4 +6770,67 @@ body
 }
 
 .views-view-grid 
-{text-align: center;}
+{width: auto;
+ max-width: 100%;
+}
+
+ 
+
+.comment {
+  border-radius: 0;
+  border-bottom: 1px solid #75a01a;
+   border-top: 1px solid #75a01a;
+}
+
+.comment_margin { 
+   margin-left: 5px;
+ }
+
+ .comment-title {
+   margin-left: 5px;
+   font-size: 15pt;
+   font-style: italic;
+ }
+
+ .field-name-comment-body {
+   margin-left: 0px;
+ }
+
+.links_right_align {
+   text-align: right;
+ }
+
+ .links_right_align > ul > li > a {
+   color: #0088cc;
+ }
+
+ .comment_text {
+   margin-left: 20px;
+   color: #000000;
+   font-style: italic;
+ }
+
+ #edit-reset {margin-top: 25px;}
+ 
+ .submit {height: 80px;}
+
+.views-exposed-widget {
+  
+}
+
+.read_more_link {
+  text-align: right;
+  margin-right: 20px;
+}
+
+.form-checkboxes .form-item  {
+  margin-top: 25px;
+}
+
+.views-view-grid {
+  margin-top: 50px;
+}
+
+.add_to_cart_img 
+{float:left; 
+ }

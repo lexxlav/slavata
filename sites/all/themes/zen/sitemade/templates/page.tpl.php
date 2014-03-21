@@ -7,12 +7,17 @@
  * @see https://drupal.org/node/1728148   
  */
 
+
+
+
+
+
 $current_dir = "http://sport_shop.loc/sites/all/themes/zen/sitemade/"; //for <base>
 include ("my_templates/for_main.php");
 ?>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+<?php if(drupal_is_front_page()) {front_page_css();}?>
 
 <div class="container">
 <div id="page">
@@ -78,7 +83,7 @@ include ("my_templates/for_main.php");
     </div>
    <div class="row-fluid"><br></div>
      <div class="row-fluid">
-       <div id="banner2"<p>Выгодное предложение от "Славата" при  покупке в инетернет-магазине!</p><br>
+       <div id="banner2"><p class="banner2_text"><br>Выгодное предложение от "Славата" при  покупке в инетернет-магазине!</p>
        </div>
      </div>   
   </header>
@@ -95,6 +100,13 @@ include ("my_templates/for_main.php");
       <?php print $breadcrumb; ?>
       <a id="main-content"></a>
       <?php if(!drupal_is_front_page()){
+            
+            if (arg(0)=='taxonomy' && arg(1)=='term' && arg(2)=='all') {
+             $title = "Товары";
+             drupal_set_title("Товары");}
+
+
+
             print render($title_prefix);
             if ($title){
                    echo "<h1 class='page__title title' id='page-title'>";
@@ -109,8 +121,14 @@ include ("my_templates/for_main.php");
                     print render($action_links);
                     echo "</ul>";}
              print render($page['content']); 
-             print $feed_icons;}
-       ?>  
+             print $feed_icons;
+            
+             if (arg(0)=='node'){
+               echo "<div class='read_more_link'><a href='/taxonomy/term/all?field_field_product_manufactured_tid=All&field_recommended_value[1]=1'> Узнать больше </a></div>"; //ССылка на распродажу
+             }       
+
+           }
+      ?>  
          
     </div>
     
@@ -180,7 +198,10 @@ include ("my_templates/for_main.php");
                     print render($action_links);
                     echo "</ul>";}
              print render($page['content']); 
-             print $feed_icons;}
+             print $feed_icons;
+        
+             echo "<div class='read_more_link'><a href='/taxonomy/term/all?field_field_product_manufactured_tid=All&field_sale_value[1]=1'> Узнать больше </a></div>"; //ССылка на распродажу
+           }
        ?>      
  <!-- -->
   <!--Про скидку-->     
@@ -192,7 +213,11 @@ include ("my_templates/for_main.php");
    <?php if ($page['content_graditude']) { for_graditude(1); print render($page['content_graditude']);for_graditude(2); } ?>
 
 <!-- -->
-   <?php print render($page['content_third']); ?> 
+   <?php print render($page['content_third']);
+       if (drupal_is_front_page()){ 
+         echo "<div class='read_more_link'><a href='/taxonomy/term/all'> Узнать больше </a></div>"; //ССылка на распродажу
+        } 
+            ?> 
 <!-- -->
    
 <!-- Про скидки 2 -->

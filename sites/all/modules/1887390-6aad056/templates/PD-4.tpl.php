@@ -1,4 +1,6 @@
-﻿<html>
+﻿
+<!-- -->
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Форма ПД-4 для оплаты через Сбербанк РФ</title>
@@ -225,7 +227,7 @@ TABLE
                   <table border="0" cellpadding="0" cellspacing="0" height="15" width="100%">
                     <tbody><tr> 
                       <td align="left" width="90">Плательщик:</td>
-                      <td class="b10"><font color="#FF0000">[commerce-receipt:billing-full-name][commerce-receipt:billing-last-name] [commerce-receipt:billing-first-name]</font></td>
+                      <td class="b10"><font color="#FF0000">[commerce-receipt:billing-full-name]</font></td>
                     </tr>
                   </tbody></table>
                 </td>
@@ -235,7 +237,7 @@ TABLE
                   <table border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tbody><tr> 
                       <td align="left" width="50">Адрес:</td>
-                      <td class="b10"><font color="#FF0000">[commerce-receipt:billing-city] [commerce-receipt:billing-post],[commerce-receipt:billing-address-1],[commerce-receipt:billing-address-2]</font></td>
+                      <td class="b10"><font color="#FF0000">[commerce-receipt:billing-city],[commerce-receipt:billing-address-1]</font></td>
                     </tr>
                   </tbody></table>
                 </td>
@@ -374,7 +376,7 @@ TABLE
                   <table border="0" cellpadding="0" cellspacing="0" height="15" width="100%">
                     <tbody><tr> 
                       <td align="left" width="90">Плательщик:</td>
-                      <td class="b10"><font color="#FF0000">[commerce-receipt:billing-full-name][commerce-receipt:billing-last-name] [commerce-receipt:billing-first-name]</font></td>
+                      <td class="b10"><font color="#FF0000">[commerce-receipt:billing-full-name]</font></td>
                     </tr>
                   </tbody></table>
                 </td>
@@ -384,7 +386,7 @@ TABLE
                   <table border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tbody><tr> 
                       <td align="left" width="50">Адрес:</td>
-                      <td class="b10"><font color="#FF0000">[commerce-receipt:billing-city] [commerce-receipt:billing-post],[commerce-receipt:billing-address-1],[commerce-receipt:billing-address-2]</font></td>
+                      <td class="b10"><font color="#FF0000">[commerce-receipt:billing-city],[commerce-receipt:billing-address-1]</font></td>
                     </tr>
                   </tbody></table>
                 </td>

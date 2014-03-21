@@ -7,10 +7,11 @@
  * @see https://drupal.org/node/1728216
  */
 ?>
+
 <article class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
   <header>
-    <p class="submitted">
+    <p class="submitted comment_margin">
       <?php print $picture; ?>
       <?php print $submitted; ?>
       <?php print $permalink; ?>
@@ -37,7 +38,9 @@
   <?php
     // We hide the comments and links now so that we can render them later.
     hide($content['links']);
-    print render($content);
+    echo "<div class='comment_text'>"; 
+     print render($content);
+    echo "</div>"; 
   ?>
 
   <?php if ($signature): ?>
@@ -45,6 +48,7 @@
       <?php print $signature; ?>
     </footer>
   <?php endif; ?>
-
+  <div class="links_right_align">
   <?php print render($content['links']) ?>
+  </div>
 </article>

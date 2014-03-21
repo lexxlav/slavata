@@ -162,10 +162,10 @@ function simple_commerce_cart() {
     $quantity = commerce_line_items_quantity($line_items, commerce_product_line_item_types());
     $summ = commerce_currency_format($total['amount'], $total['currency_code']);
 
-    print "<div id='cart_count'>{$quantity}</div><div id='cart_summ'>{$summ}</div>";
+    print "<div id='cart_count'><center>{$quantity}</center></div><div id='cart_summ'>{$summ}</div>";
   }
   else {
-    print "пусто";
+    print "<div id='cart_count'><center>0</center></div><div id='cart_summ'>0,00 руб.</div>";
   }
 }
 

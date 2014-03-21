@@ -54,6 +54,7 @@ stylesheets[all][] = css/styles.css
 stylesheets[all][] = css/bootstrap.css
 stylesheets[all][] = css/jquery.bxslider.css
 
+
 ; Built-in conditional stylesheet support has been removed from Zen 7.x-5.x.
 ; Instead, Zen now adds conditional-comment-included classes to the html
 ; element, such as .lt-ie9, .lt-ie8, .lt-ie7. More information on this
@@ -73,6 +74,7 @@ scripts[] = js/bootstrap.min.js
 scripts[] = js/jquery.bxslider.min.js
 ;scripts[] = js/resp_carousel.js
 scripts[] = js/jquery-latest.js
+
 
 
 
